@@ -1,0 +1,236 @@
+.main_section {
+  width: 80%;
+  margin: 3em auto;
+  display: grid;
+  place-items: center;
+}
+h1 {
+  font-size: 3em;
+}
+label {
+  font-size: 1.1em;
+  color: var(--text);
+  line-height: 100%;
+}
+/* TASKS==================================================== */
+.tasks_container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.t_row_list {
+  color: var(--white);
+  /* border: 1px solid var(--text); */
+  width: 100%;
+  box-shadow: 0 0 5px var(--text);
+  display: flex;
+}
+.t_card {
+  position: relative;
+  display: flex;
+  padding: 1em;
+  flex-direction: column;
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 0 8px var(--gray);
+  & span {
+    font-size: 0.7em;
+    color: var(--gray10);
+  }
+}
+.t_card.complete {
+  background: green;
+}
+.t_card.incomplete {
+  background: var(--incomplete);
+}
+.t_c_head {
+  & h3 {
+    display: flex;
+    align-items: center;
+  }
+}
+.t_c_footer.dateOff {
+  display: none;
+}
+.t_delete {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+  & button {
+    transition: width 0.3s;
+    background: none;
+    color: var(--white);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease;
+    &:hover {
+      background-color: var(--gray10);
+      color: var(--text);
+    }
+  }
+}
+.t_title {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2em 0;
+  h2 {
+    font-weight: bolder;
+    font-size: 3em;
+    display: inline;
+  }
+  & span {
+    font-size: 2em;
+  }
+  & p {
+    line-height: 0%;
+  }
+}
+
+.form_container {
+  display: flex;
+  width: 100%;
+  & img {
+    margin: 0 auto;
+  }
+}
+form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  & button {
+    font-size: 1.5em;
+    padding: 0.5em 1em;
+    border: none;
+    color: var(--white);
+    background-color: var(--text);
+    box-shadow: 0 0 5px var(--gray);
+    outline: none;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--hover);
+    }
+  }
+}
+input {
+  background-color: var(--bg);
+  width: 100%;
+  padding: 1em;
+  border: none;
+  border-bottom: 2px solid var(--text);
+  border-radius: 5px;
+  /* box-shadow: 0 0 5px var(--gray); */
+  outline: none;
+}
+.t_buttons {
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  & button:nth-child(1) {
+    width: 80%;
+    &:hover {
+      background-color: var(--complete);
+    }
+  }
+  & button:nth-child(2) {
+    width: 20%;
+    position: relative;
+    overflow: hidden;
+    &::after {
+      content: "Borrar todo";
+      position: absolute;
+      transition: 0.1s;
+      left: 0;
+      bottom: -20px;
+      width: 100%;
+      height: 15px;
+      font-size: 0.5em;
+      background-color: var(--text);
+      color: var(--white);
+    }
+    &:hover {
+      background-color: var(--incomplete);
+    }
+    &:hover::after {
+      bottom: 0px;
+    }
+  }
+}
+/* clock */
+.loader {
+  width: 35px;
+  height: 35px;
+  border: 4px solid var(--white);
+  border-radius: 50px;
+  position: relative;
+}
+.loader.off {
+  display: none;
+}
+
+.loader span {
+  display: block;
+  background: var(--white);
+}
+
+.loader .hour,
+.loader .min {
+  width: 3px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  top: 14px;
+  left: 11.8px;
+  animation: load9243 1.2s linear infinite;
+  transform-origin: top center;
+}
+
+.loader .min {
+  height: 15px;
+  animation: load9243 4s linear infinite;
+}
+
+.loader .circel {
+  width: 9px;
+  height: 9px;
+  border-radius: 50px;
+  position: absolute;
+  top: 9px;
+  left: 8.5px;
+}
+
+@keyframes load9243 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media (width<780px) {
+  .form_container {
+    flex-direction: column-reverse;
+  }
+  form {
+    width: 100%;
+  }
+  .t_title {
+    align-items: flex-start;
+  }
+}
